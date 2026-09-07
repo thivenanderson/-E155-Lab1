@@ -20,4 +20,4 @@ module top(
   assign fpga_blink_out = counter[24];
 	assign mcu_echo_led = mcu_blink_in;
 
-endmodule
+endmodule 
