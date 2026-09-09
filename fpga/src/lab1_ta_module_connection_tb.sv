@@ -33,9 +33,9 @@ initial begin
 	enable=1;
 
 // MAX_COUNT = 5 means wait through the count sequence
-repeat (6)
+repeat (6) begin
     @(posedge dut.int_osc);
-
+	end
 #1;
 	assert (led[2]== 1)
 				$display("PASSED! The top level module successfully connected to the blink counter: %0t.", $time);

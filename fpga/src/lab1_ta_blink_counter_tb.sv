@@ -22,24 +22,25 @@ module lab1_ta_blink_counter_tb();
     // apply stimuli and check outputs
   initial begin
     reset = 0;
-	enble=0;
-    	@(posedge clk);
-    	@(posedge clk);
+	enable=0;
+    @(posedge clk);
+
 	reset = 1;
 	enable = 1;
 	
 	//test max couht
-	reapeat(6) //6 counts wit a max of 5
+	repeat(6) begin //6 counts wit a max of 5
 	@(posedge clk);
+	end
 	#1;
 	assert (led ==1)
 	$display("Passed! The blink counter behaves as desired at time: %0t.", $time); 
 	else 
             $error("FAILED! The blink counter behaves incorrectly at time: %0t.", $time); 
 	
-	repeat (6)
+	repeat (6) begin
     @(posedge clk);
-
+	end
     #1;
 	assert (led == 0)
 		$display("Passed! The blink counter behaves as desired at time: %0t.", $time); 
@@ -48,19 +49,19 @@ module lab1_ta_blink_counter_tb();
 	//test enable
 	enable =0;
 	
-    repeat (5)
+    repeat (5) begin
     @(posedge clk);
-
+	end
     #1;
 	assert (led == 0)
 		$display("Passed! The enable function behaves as desired at time: %0t.", $time); 
 	else 
             $error("FAILED! The enable function behaves incorrectly at time: %0t.", $time); 
 	enable = 1;
-
-    repeat (6)
+	
+    repeat (6) begin
     @(posedge clk);
-
+	end
     #1;
 
 	assert (led == 1)
@@ -69,8 +70,7 @@ module lab1_ta_blink_counter_tb();
             $error("FAILED! The enable function behaves incorrectly at time: %0t.", $time);
 	//test reset
 	reset=0;
-	@(posedge clk);
-    #1;
+    #10;
 	assert (led == 0)
             $display("PASSED! The reset function behaves as desired at time: %0t.", $time);
 	else 

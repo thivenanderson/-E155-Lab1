@@ -11,7 +11,7 @@ module lab1_ta_blink_counter #(
 	
 	logic [WIDTH-1:0] counter;
 	
-	always_ff @(posedge clk, posedge reset) begin
+	always_ff @(posedge clk) begin
 		
 			if (!reset) begin
 				counter <= 0;
